@@ -144,5 +144,45 @@
 				setPlayerTwoDOM(data) })
 				.catch(err => console.error(err));
 		},
+		setPlayerOneDOM = result => {
+			playerOneName.textContent = result.name;
+			playerOneRepos.textContent = result.public_repos;
+			playerOneUserName.textContent = result.login;
+			playerOneImg.setAttribute('src',result.avatar_url);
+			playerOneLocation.textContent = result.location;
+			playerOneFollowing.textContent = result.following;
+			playerOneFollowers.textContent = result.followers;
+			playerOneBlog.textContent = result.blog;
+			playerOneCompany.textContent = result.company;
+		},
+		setPlayerTwoDOM = result => {
+			playerTwoName.textContent = result.name;
+			playerTwoRepos.textContent = result.public_repos;
+			playerTwoUserName.textContent = result.login;
+			playerTwoImg.setAttribute('src', result.avatar_url);
+			playerTwoLocation.textContent = result.location;
+			playerTwoFollowing.textContent = result.following;
+			playerTwoFollowers.textContent = result.followers;
+			playerTwoBlog.textContent = result.blog;
+			playerTwoCompany.textContent = result.company;
+		},
+		getURLParams = () =>{
+		//get query parameters
+		const urlParams = new URLSearchParams(window.location.search);
+		//set player names into variables
+		const FistName = urlParams.get('playerOne'),
+			secondName = urlParams.get('playerTwo');
+		//fetch from API and set results into DOM
+		const resp = fetchFromGitHubAPI(FistName, secondName);
 		
+		//keep the url clean
+		var myNewURL = "Results";//the new URL
+		window.history.pushState("object or string", "Title", "/" + myNewURL);
+		};
+
+	initiateBtn.addEventListener('click', (e) => {
+		//add the logic for the battle here
+	});
+
+	window.onload= getURLParams;
 </script>
