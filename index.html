@@ -63,7 +63,24 @@
 		playerTwoInput = document.getElementById("playerTwoInput")
 	playerTwo = document.getElementById("playerTwo");
 
-
+let playerOneName = "",
+playerTwoName = "",
+UrlString = "";
+	startedBtn.addEventListener("click", (e) => {
+		getStartedDiv.style.display = "none";
+		playerOne.style.display = "block";
+		
+	});
+	playerOneBtn.addEventListener("click", (e) => {
+		playerOneName = playerOneInput.value;
+		playerOne.style.display = "none";
+		playerTwo.style.display = "block";
+	});
+	playerTwoBtn.addEventListener("click", (e) => {
+		playerTwoName = playerTwoInput.value;
+		//redirect with query string parameters
+		location.href =`./Results.html?playerOne=${playerOneName}&&playerTwo=${playerTwoName}`;
+	});
 </script>
 
 
