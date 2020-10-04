@@ -129,5 +129,20 @@
 		playerTwoBlog = document.getElementById("playerTwoBlog"),
 		playerTwoCompany = document.getElementById("playerTwoCompany"),
 
+		fetchFromGitHubAPI = (playerName1, playerName2) => {
+			fetch('https://api.github.com/users/' + playerName1)
+			.then(data => data.json())
+			.then(data => { 
+				console.log(data)
+				setPlayerOneDOM(data) })
+				.catch(err => console.error(err));
+
+				fetch('https://api.github.com/users/' + playerName2)
+			.then(data => data.json())
+			.then(data => { 
+				console.log(data)
+				setPlayerTwoDOM(data) })
+				.catch(err => console.error(err));
+		},
 		
 </script>
